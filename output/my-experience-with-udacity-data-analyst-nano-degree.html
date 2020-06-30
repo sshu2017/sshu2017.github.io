@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="author" content="sshu" />
-        <meta name="description" content="I am aware of the existence of Git Hooks for quite a while but haven&#39;t really tried it out myself until today. Although it looks a simple thing to do, I did come across some interesting issues and had to do a little bit research. So why not share what …" />
+        <meta name="author" content="shushi2000" />
+        <meta name="description" content="After spending most of my spare time in the past 8 months, I finally graduated from the Udacity Data Analyst Nano-Degree program! Before I started this program, I have spent many hours searching online for reviews and discussions about it. Now I would like to share my whole experience with …" />
 
 
-    <title>TIL: How to use Git Hooks for Better Code Quality - SSHU's BLOG</title>
+    <title>My Experience with Udacity Data Analyst Nano-degree - SSHU's BLOG</title>
 
         <link rel="stylesheet" href="https://sshu2017.github.io/theme/css/bootstrap.journal.min.css" type="text/css"/>
 
@@ -135,7 +135,7 @@
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
-                    <li >
+                    <li class="active">
                         <a href="https://sshu2017.github.io/category/general.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             General
@@ -163,7 +163,7 @@
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
-                    <li class="active">
+                    <li >
                         <a href="https://sshu2017.github.io/category/python-git-today-i-learned.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Python, Git, Today I Learned
@@ -205,20 +205,20 @@
             <div class="col-lg-9">
                 <header class="page-header">
                     <h1>
-                        <a href="https://sshu2017.github.io/How to use Git Hooks for Better Code Quality.html"
+                        <a href="https://sshu2017.github.io/my-experience-with-udacity-data-analyst-nano-degree.html"
                            rel="bookmark"
-                           title="Permalink to TIL: How to use Git Hooks for Better Code Quality">
-                            TIL: How to use Git Hooks for Better Code Quality
+                           title="Permalink to My Experience with Udacity Data Analyst Nano-degree">
+                            My Experience with Udacity Data Analyst Nano-degree
                         </a>
                         <small>
 <div class="post-info">
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2020-06-29T00:00:00-07:00"> Mon 29 June 2020</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2016-05-07T08:11:00-07:00"> Sat 07 May 2016</time>
             </span>
             <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="https://sshu2017.github.io/category/python-git-today-i-learned.html">Python, Git, Today I Learned</a>
+                <i class="fa fa-folder-open padding-small"></i><a href="https://sshu2017.github.io/category/general.html">General</a>
             </span>
         </small>
     </div>
@@ -230,70 +230,16 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <p>I am aware of the existence of <strong><a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">Git Hooks</a></strong> for quite a while but haven't really tried it out myself until today. Although it looks a simple thing to do, I did come across some <em>interesting</em> issues and had to do a little bit research. So why not share what I learned with the internet?</p>
-<p>First, I created one simple Python script, <strong><em>encrypt.py</em></strong>,  in which a function called <strong><em>encOnePassword</em></strong> is defined.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">hashlib</span>
-
-
-<span class="k">def</span> <span class="nf">encOnePassword</span><span class="p">(</span><span class="n">rawPassword</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Encrypt one string by using SHA256 with *Salt*</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        x (string): Any password from user input</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">salt</span> <span class="o">=</span> <span class="s2">&quot;This is the SALT&quot;</span>
-
-    <span class="c1"># if I accidentally changed th salt</span>
-    <span class="c1"># salt = &quot;This is not the SALT to use!&quot;</span>
-
-    <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">((</span><span class="n">salt</span> <span class="o">+</span> <span class="n">rawPassword</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
-</code></pre></div>
-
-
-<p>Then I created another simple test script <strong><em>test_encrypt.py</em></strong>.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pytest</span>
-<span class="kn">from</span> <span class="nn">encrypt</span> <span class="kn">import</span> <span class="n">encOnePassword</span>
-
-
-<span class="k">def</span> <span class="nf">test_encOnePassword</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">encOnePassword</span><span class="p">(</span>
-        <span class="s2">&quot;1234567&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;9f9df71798d99794f643f7282d2b98c20a538ee0d307aa1b3d2387635c6ae52f&quot;</span>
-    <span class="k">assert</span> <span class="n">encOnePassword</span><span class="p">(</span>
-        <span class="s2">&quot;ABC_DEF&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;90da2f1901ff71c8ffdb314ce2621180d0169492ea9343bc1a9bb86bbfecd6b6&quot;</span>
-</code></pre></div>
-
-
-<p>Next, I ran the <strong><em>git init</em></strong> command and initialized a git repo. But when I looked into the <strong><em>.git/hooks/</em></strong> directory, there are a bunch of codes in there already! Well, that's something I didn't expect at all.</p>
-<p><img src="images/git_hooks_samples.png"></p>
-<p>So I made a directory call <strong><em>backup</em></strong> and moved all these samples into it, so they won't interfere with what I plan to do next. Then I created a shell script called <strong><em>pre-commit.sh</em></strong>.</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="nv">current_branch</span><span class="o">=</span><span class="sb">`</span>git branch <span class="p">|</span>grep <span class="s1">&#39;*&#39;</span> <span class="p">|</span>sed <span class="s1">&#39;s/* //&#39;</span><span class="sb">`</span>
-
-<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$current_branch</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="s2">&quot;master&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-    <span class="nb">echo</span> <span class="s2">&quot;Running tests pre-committ&quot;</span>
-    python -m pytest test_*.py
-    <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-        <span class="nb">echo</span> <span class="s2">&quot;Tests all passed!&quot;</span>
-        <span class="nb">exit</span> <span class="m">0</span>
-    <span class="k">else</span>
-        <span class="nb">echo</span> <span class="s2">&quot;Tests failed ... Committ not successful!&quot;</span>
-        <span class="nb">exit</span> <span class="m">1</span>
-    <span class="k">fi</span>
-<span class="k">fi</span>
-</code></pre></div>
-
-
-<p>*<em>Here I referenced the codes from <a href="https://www.giacomodebidda.com/a-simple-git-hook-for-your-python-projects/">Giacomo's blog</a> and changed it a little to fit my needs.</em></p>
-<p>When all of these are in place, I made the initial commit and it went smoothly. Then I changed the <strong><em>salt</em></strong> in the <strong><em>encOnePassword</em></strong> function, to mimic an unintentional bug, and commit the code again. I though the <strong><em>pre-commit</em></strong> hook would throw out an error and interrupt the commit, but <strong><em>IT DID NOT</em></strong>! What a surprise!</p>
-<p>After a little search on <a href="www.stacoverflow.com">stackoverflow</a>,I found <a href="https://stackoverflow.com/questions/5084100/post-commit-hook-not-running">this answer</a> and did two things:</p>
-<ol>
-<li>Changed the script name from <code>pre-commit.sh</code> to <code>pre-commit</code> (yes, remove the <code>.sh</code> part.)</li>
-<li>Made the script an executable one by running <code>chmod +x pre-commit</code>.</li>
-</ol>
-<p>Now, finally, the hook is working as I expected and it prevented me from committing bad codes to the master branch! Hooray!</p>
+                    <p>After spending most of my spare time in the past 8 months, I finally graduated from the Udacity Data Analyst Nano-Degree program! Before I started this program, I have spent many hours searching online for reviews and discussions about it. Now I would like to share my whole experience with the internet and hope it is helpful to someone like me. Since I have also taken other courses at <a href="https://www.coursera.org/">coursera.org</a> and <a href="https://www.edx.org/">edx.org</a>, I can make some direct comparisons which should be helpful too.</p>
+<p>First, I would say it really requires a lot of time to finish the degree. I roughly spent 15 + hours each week on this program in the past 8 months. This maybe does not sound like a lot of time to you, but actually it is, especially if you have another full-time job. So don't jump into it if you can't afford the time. As for tuitions, I have paid \$1,600 for the program but Udacity will refund half of it because I finished the program within 12 months and I paid all of my tuition out of my own pocket. I haven't received the refund yet because Udacity told me it takes 4 - 8 weeks to process. Just don't forget to submit a request for this refund - Udacity will not automatically refund it to you.</p>
+<p>The 8 projects covered a wide range of aspects in the data science field, including statistics, Python programing, R programing, machine learning, and D3.js data visualization. The  Python and R programing focused on data manipulation, wrangling, and visualization. The machine learning course is really condensed and does not go deep in algorithms and theories, compared to other machine learning courses. Overall, this nano-degree really focuses on the analysis skills such as process data and find interesting stories. If you want to be a data scientist instead of data analyst, this nano-degree is probably not the best choice for you.</p>
+<p>There are many things I really liked about this program. First, Udacity has an amazing 'customer support' team. The coaches provide 1-0n-1 help sessions. Of course these coaching sessions need to be reserved first, which is fairly easy to do. Each help session is scheduled to be 20 minutes long, but a coach once chatted with me for more than an hour, until I really solved the problem. I only used online text chatting but it seems the coaches are open to other communication methods such as video-chatting or phone call as well. In addition, the discussion forum is a good resource that helped me finishing all the projects. The coaches reply to questions VERY quickly, usually in 30 min or less. And they are always very patient! The coaches also review the project submission in great details, give constructive feedbacks, and encourage the students all the time. I think this coaching team is the factor that makes this nano-degree program stand out, compared to other MOOC courses or specializations.</p>
+<p>However, I believe this program still has some room for improvement. My biggest frustrations came from the course videos. Maybe it is because Udacity only consider the course videos as supporting materials, or maybe it is because the course are taught by mentors from the industry, I felt that the course videos are nothing like a real class. For a substantial amount of portion, the videos are just two or more mentors talking. The course videos did not really help me too much in finishing my projects.  I like the course videos on coursera.org much better because they are better organized and the contents are taught systematically. That is not the case with Udacity courses, at least for the data analyst nano-degree.</p>
+<p>Another question people care about this program is that if it really help the students finding a job. Well, I can't tell because I am just me, one sample, and there is not even a control sample. But at least the program gave me something to talk about data analysis during my interviews, so I would say, yes, it is useful.</p>
+<p>Please feel free to comment below if you would like to take the program, are in the middle of the program, or have graduated. I'd be happy to answer any questions about this Udacity Data Analyst Nano-degree.</p>
                 </div>
                 <footer class="text-right">
-                    <p>- sshu</p>
+                    <p>- shushi2000</p>
                 </footer>
             </div>
         </div>

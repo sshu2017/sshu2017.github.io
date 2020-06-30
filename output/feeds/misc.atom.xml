@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>SSHU's BLOG - Misc</title><link href="https://sshu2017.github.io/" rel="alternate"></link><link href="https://sshu2017.github.io/feeds/misc.atom.xml" rel="self"></link><id>https://sshu2017.github.io/</id><updated>2020-06-25T00:00:00-07:00</updated><subtitle>About Programming, Data Science/Engineering etc.</subtitle><entry><title>Raspberry Pi Cluster with Hadoop and Spark - How I tried, failed, and learned</title><link href="https://sshu2017.github.io/raspberry-pi-cluster-with-hadoop-and-spark-how-i-tried-failed-and-learned.html" rel="alternate"></link><published>2020-06-25T00:00:00-07:00</published><updated>2020-06-25T00:00:00-07:00</updated><author><name>sshu</name></author><id>tag:sshu2017.github.io,2020-06-25:/raspberry-pi-cluster-with-hadoop-and-spark-how-i-tried-failed-and-learned.html</id><summary type="html">&lt;p&gt;This is not a tutorial on how to build Raspberry Pi cluster and install Hadoop/Spark on it at all. This is a &lt;strong&gt;diary&lt;/strong&gt; for myself to document the process of tring to build one, failed in the end, and learned lots of new things. &lt;/p&gt;
+&lt;p&gt;I have seen many other …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is not a tutorial on how to build Raspberry Pi cluster and install Hadoop/Spark on it at all. This is a &lt;strong&gt;diary&lt;/strong&gt; for myself to document the process of tring to build one, failed in the end, and learned lots of new things. &lt;/p&gt;
+&lt;p&gt;I have seen many other people built clusters with several Raspberry Pis, ranging from 4 RPis to 100+&lt;/p&gt;
+&lt;p&gt;https://dev.to/awwsmm/building-a-raspberry-pi-hadoop-spark-cluster-8b2&lt;/p&gt;</content><category term="Misc"></category></entry><entry><title>The .vimrc File I Use and Love</title><link href="https://sshu2017.github.io/the-vimrc-file-i-use-and-love.html" rel="alternate"></link><published>2020-06-10T00:00:00-07:00</published><updated>2020-06-10T00:00:00-07:00</updated><author><name>sshu</name></author><id>tag:sshu2017.github.io,2020-06-10:/the-vimrc-file-i-use-and-love.html</id><summary type="html">&lt;p&gt;I started using Vim as my major code editor in 2017, when I started my current job as a Data Scientist at &lt;a href="https://pointpredictive.com/" target="_blank"&gt;PointPredictive Inc.&lt;/a&gt;, because the job requires me to SSH into remote Linux servers and edit Python and Bash scripts in the terminal. To be precise, I started with …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I started using Vim as my major code editor in 2017, when I started my current job as a Data Scientist at &lt;a href="https://pointpredictive.com/" target="_blank"&gt;PointPredictive Inc.&lt;/a&gt;, because the job requires me to SSH into remote Linux servers and edit Python and Bash scripts in the terminal. To be precise, I started with Nano, which could let me get my job done. However I felt Nano is really inconvenient to use. So I decided to switch to Vim. The initial phase of using Vim is okay, not as horrible as many people have found, except that I DID go to stackoverflow to find out how to quit Vim (Ah yes, I was one of the &lt;a href="https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/" target="_blank"&gt;1 million people who had struggled&lt;/a&gt;). As time went by, the more I played around with Vim , the more I realized how powerful and versatile it is, and the more I liked it.&lt;/p&gt;
+&lt;p&gt;After almost 3 years of using Vim, I finally have my .vimrc that I feel is good enough for me. And here it is.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;nocompatible&lt;/span&gt;
+        &lt;span class="n"&gt;filetype&lt;/span&gt; &lt;span class="k"&gt;off&lt;/span&gt;
+        &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;rtp&lt;/span&gt;&lt;span class="o"&gt;+=~/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;vim&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bundle&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;vundle&lt;/span&gt;
+        &lt;span class="k"&gt;call&lt;/span&gt; &lt;span class="n"&gt;vundle&lt;/span&gt;&lt;span class="o"&gt;#&lt;/span&gt;&lt;span class="n"&gt;rc&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;gmarik/vundle&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;jiangmiao/auto-pairs&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Lokaltog/vim-powerline&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;scrooloose/nerdcommenter&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;tmhedberg/SimpylFold&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Yggdroot/indentLine&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;scrooloose/syntastic&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;flazz/vim-colorschemes&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;scrooloose/nerdtree&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;RRethy/vim-illuminate&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;majutsushi/tagbar&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;psliwka/vim-smoothie&amp;#39;&lt;/span&gt;
+
+&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;vb&lt;/span&gt;
+&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="k"&gt;g&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;is_bash&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;incsearch&lt;/span&gt;
+&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;hlsearch&lt;/span&gt;
+&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;bg&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;light&lt;/span&gt;
+&lt;span class="n"&gt;syntax&lt;/span&gt; &lt;span class="k"&gt;on&lt;/span&gt;
+&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;autoindent&lt;/span&gt;
+&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;smartindent&lt;/span&gt;
+&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nb"&gt;number&lt;/span&gt;
+&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;relativenumber&lt;/span&gt;
+&lt;span class="n"&gt;hi&lt;/span&gt; &lt;span class="n"&gt;clear&lt;/span&gt;
+&lt;span class="n"&gt;syntax&lt;/span&gt; &lt;span class="n"&gt;enable&lt;/span&gt;
+&lt;span class="n"&gt;colorscheme&lt;/span&gt; &lt;span class="n"&gt;monokai&lt;/span&gt;
+&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;shiftwidth&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;
+&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;tabstop&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;
+&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;expandtab&lt;/span&gt;
+&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;laststatus&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;showmatch&lt;/span&gt;
+&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;novisualbell&lt;/span&gt;
+&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;cursorline&lt;/span&gt;
+&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="n"&gt;guicursor&lt;/span&gt;&lt;span class="o"&gt;+=&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;c&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;blinkon0&lt;/span&gt;
+&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="k"&gt;g&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;PyFlakeCheckers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pep8, mccabe, frosted&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="k"&gt;g&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;PyFlakeOnWrite&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Misc"></category></entry></feed>
