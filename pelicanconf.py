@@ -21,7 +21,7 @@ CC_LICENSE = "CC-BY-SA"
 PYGMENTS_STYLE = "friendly"
 
 SITESUBTITLE = "About Programming, Data Science/Engineering etc."
-DISPLAY_PAGES_ON_MENU = True
+DISPLAY_PAGES_ON_MENU = False
 DISPLAY_CATEGORIES_ON_MENU = True
 TYPOGRIFY = False
 # --------------------------
