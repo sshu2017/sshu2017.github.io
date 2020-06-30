@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="sshu" />
+        <meta name="description" content="I think it is not just me who would think that, as technology advances, the flight carriers are able to reduce the arrival delay over time. Is that really the case? I looked into the historic flights data and found something surprising and interesting. First I downloaded all the historic …" />
+
+
+    <title>Have Flights Delays decreased Over Time? - SSHU's BLOG</title>
+
+        <link rel="stylesheet" href="https://sshu2017.github.io/theme/css/bootstrap.journal.min.css" type="text/css"/>
+
+    <link href="https://sshu2017.github.io/theme/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://sshu2017.github.io/theme/css/pygments/friendly.css" rel="stylesheet" />
+    
+    <link href="https://sshu2017.github.io/theme/css/pelican-twitchy.min.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- Feeds -->
+        <link href="https://sshu2017.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="SSHU's BLOG ATOM Feed" />
+</head>
+<body data-spy="scroll" data-target="#scrollspy">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper-small" class="twitchy-background">
+            <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
+                <li>
+        <a href="https://sshu2017.github.io" title="SSHU's BLOG" class="collapsed">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="https://sshu2017.github.io/archives.html" title="Recent Articles" class="collapsed">
+            <span class="glyphicon glyphicon-th-list"></span>
+        </a>
+    </li>
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-social-small" title="Social" class="collapsed">
+                        <i class="fa fa-users padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
+                    <li>
+                        <a href="#" title="Another social link"><i class="fa fa-another-social-link-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" title="You can add links in your config file"><i class="fa fa-you-can-add-links-in-your-config-file-square fa-lg padding-small"></i></a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="#" title="Back to top" class="collapsed">
+            <span class="fa fa-arrow-up"></span>
+        </a>
+    </li>
+            </ul>
+        </div>
+        <div id="sidebar-wrapper" class="twitchy-background">
+            <ul id="accordion" class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="https://sshu2017.github.io/">
+                            <span class="glyphicon glyphicon-home padding-small"></span>
+                            SSHU's BLOG
+                    </a>
+                </li>
+                    <li>
+                        <a href="https://sshu2017.github.io/archives.html">
+                            <span class="glyphicon glyphicon-th-list padding-small"></span>
+                            Recent Articles
+                        </a>
+                    </li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
+                        <i class="fa fa-users padding-small"></i>
+                        Contact
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="#" title="Another social link">
+                            <i class="fa fa-another-social-link-square fa-lg padding-small"></i>
+                            Another social link
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="You can add links in your config file">
+                            <i class="fa fa-you-can-add-links-in-your-config-file-square fa-lg padding-small"></i>
+                            You can add links in your config file
+                        </a>
+                    </li>
+                </ul></li>
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-pages">
+                        <i class="fa fa-folder-open padding-small"></i>
+                        Pages
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-pages" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://sshu2017.github.io/pages/flights-arrival-delay.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            Flights Arrival Delay
+                        </a>
+                    </li>
+                </ul></li>
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
+                        <i class="fa fa-folder-open padding-small"></i>
+                        Categories
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
+                    <li class="active">
+                        <a href="https://sshu2017.github.io/category/data-visualization.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Data visualization
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://sshu2017.github.io/category/general.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            General
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://sshu2017.github.io/category/general-python.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            General, Python
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://sshu2017.github.io/category/machine-learning.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Machine Learning
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://sshu2017.github.io/category/misc.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Misc
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://sshu2017.github.io/category/python-git-today-i-learned.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Python, Git, Today I Learned
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://sshu2017.github.io/category/r-web-scraping.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            R, web-scraping
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="https://sshu2017.github.io/category/scala.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Scala
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                </ul></li>
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- open/close sidebar -->
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+            <span id="right-arrow" class="glyphicon glyphicon-chevron-right"  title="expand sidebar"></span>
+            <span id="left-arrow" class="glyphicon glyphicon-chevron-left" title="minimize sidebar"></span>
+        </a>
+       <!-- /open/close sidebar -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+<section id="content">
+    <article>
+        <div class="row">
+            <div class="col-lg-9">
+                <header class="page-header">
+                    <h1>
+                        <a href="https://sshu2017.github.io/have-flights-delays-decreased-over-time.html"
+                           rel="bookmark"
+                           title="Permalink to Have Flights Delays decreased Over Time?">
+                            Have Flights Delays decreased Over Time?
+                        </a>
+                        <small>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2016-05-07T06:33:00-07:00"> Sat 07 May 2016</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="https://sshu2017.github.io/category/data-visualization.html">Data visualization</a>
+            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                        </small>
+                    </h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="entry-content">
+                    <p>I think it is not just me who would think that, as technology advances, the flight carriers are able to reduce the arrival delay over time. Is that really the case? I looked into the historic flights data and found something surprising and interesting.</p>
+<p>First I downloaded all the historic flights data from <a href="http://stat-computing.org/dataexpo/2009/the-data.html">stat-computing.org</a>.  These 22 years (1987 -2008) of data add up to be more than 10 GB. So I wrote <a href="https://github.com/shushi2016/DataViz1/blob/FlightsRepo/AggregateFlightsData_v3.R">a piece of R code</a> which can read each csv file and extract the information I need for each carrier in each year.  I tried many different ways to aggregate the data, for example, using the yearly average, 75% quantile, 99% quantile, and the yearly maximum. Since there are so many flight records for each carrier each year, I only found the yearly maximum arrival delays had some clear trends over time.</p>
+<p>Surprisingly, this exploratory data analysis suggested that the yearly maximum of arrival delays increased rather than decreased in these 22 years. This is somehow counter-intuitive to me because I thought the Information Technology has developed so much and should have helped to reduce the flights delay. Anyway, I used D3.js and created an interactive scatter-line plot to show these trends.  Below is a thumbnail of the plot, which is linked to the real html file where the plot is hosted. The legend is clickable so you can select which carriers' data you would like to see or not see.</p>
+<p><strong><a href="http://shushi2016.github.io/DataViz1/" target="_blank">HERE </a> is the link to the interactive chart.</strong></p>
+<div>
+
+<img src="./images/flight_delay_chart.png" width="800" align="center"/>
+
+
+
+<br><br>
+
+After making this plot and looking back into the data set, I realized it is reasonable that the yearly maximum arrival delays have increased in the past. The major reasons I can speculate includes:
+
+1.  More and more people are taking airplanes to travel therefore there are a lot more flights to manage for each carrier.
+2.  The number of longer distance flights increased and chances of longer arrival delay increased.
+3.  The yearly maximum delay are probably caused by some extreme weather conditions or natural disasters, which seem to happen more frequently in recent years.
+
+
+
+Full code of the interactive chart:
+
+<br><br>
+
+
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;text/html;charset=utf-8&quot;</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;Content-Type&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;style.css&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Flights Arrival Delay<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src </span><span class="o">=</span> <span class="s">&quot;https://d3js.org/d3.v3.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src </span><span class="o">=</span> <span class="s">&quot;http://dimplejs.org/dist/dimple.v2.1.6.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Data Visualization Project<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Historic Flights Data<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id </span><span class="o">=</span> <span class="s">&quot;chartContainer&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="p">&gt;</span>
+  <span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">margin</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">width</span> <span class="o">=</span> <span class="mi">1200</span> <span class="o">-</span> <span class="nx">margin</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">height</span> <span class="o">=</span> <span class="mi">700</span> <span class="o">-</span> <span class="nx">margin</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">svg</span> <span class="o">=</span> <span class="nx">dimple</span><span class="p">.</span><span class="nx">newSvg</span><span class="p">(</span><span class="s2">&quot;#chartContainer&quot;</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span><span class="nx">height</span><span class="p">);</span>
+
+  <span class="nx">d3</span><span class="p">.</span><span class="nx">csv</span><span class="p">(</span><span class="s2">&quot;YearlyMaxTotal.csv&quot;</span><span class="p">).</span><span class="nx">row</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">Count</span> <span class="o">:</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span>
+      <span class="nx">Year</span> <span class="o">:</span> <span class="nx">d</span><span class="p">.</span><span class="nx">Year</span><span class="p">,</span>
+      <span class="nx">ArrDelay</span> <span class="o">:</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="o">+</span><span class="nx">d</span><span class="p">.</span><span class="nx">ArrDelay</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+      <span class="nx">DepDelay</span> <span class="o">:</span> <span class="nx">d</span><span class="p">.</span><span class="nx">DepDelay</span><span class="p">,</span>
+      <span class="nx">Carrier</span> <span class="o">:</span> <span class="nx">d</span><span class="p">.</span><span class="nx">UniqueCarrier</span>
+    <span class="p">};</span>
+    <span class="p">}).</span><span class="nx">get</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">myChart</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">dimple</span><span class="p">.</span><span class="nx">chart</span><span class="p">(</span><span class="nx">svg</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+    <span class="c1">//add legend</span>
+    <span class="kd">var</span> <span class="nx">myLegend</span> <span class="o">=</span> <span class="nx">myChart</span><span class="p">.</span><span class="nx">addLegend</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">);</span>
+    <span class="c1">//define a color palette</span>
+    <span class="nx">myChart</span><span class="p">.</span><span class="nx">defaultColors</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="k">new</span> <span class="nx">dimple</span><span class="p">.</span><span class="nx">color</span><span class="p">(</span><span class="s2">&quot;#3498db&quot;</span><span class="p">,</span> <span class="s2">&quot;#2980b9&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="c1">// blue</span>
+      <span class="k">new</span> <span class="nx">dimple</span><span class="p">.</span><span class="nx">color</span><span class="p">(</span><span class="s2">&quot;#e74c3c&quot;</span><span class="p">,</span> <span class="s2">&quot;#c0392b&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="c1">// red</span>
+      <span class="k">new</span> <span class="nx">dimple</span><span class="p">.</span><span class="nx">color</span><span class="p">(</span><span class="s2">&quot;#2ecc71&quot;</span><span class="p">,</span> <span class="s2">&quot;#27ae60&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="c1">// green</span>
+      <span class="k">new</span> <span class="nx">dimple</span><span class="p">.</span><span class="nx">color</span><span class="p">(</span><span class="s2">&quot;#9b59b6&quot;</span><span class="p">,</span> <span class="s2">&quot;#8e44ad&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="c1">// purple</span>
+      <span class="k">new</span> <span class="nx">dimple</span><span class="p">.</span><span class="nx">color</span><span class="p">(</span><span class="s2">&quot;#e67e22&quot;</span><span class="p">,</span> <span class="s2">&quot;#d35400&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="c1">// orange</span>
+      <span class="k">new</span> <span class="nx">dimple</span><span class="p">.</span><span class="nx">color</span><span class="p">(</span><span class="s2">&quot;#f1c40f&quot;</span><span class="p">,</span> <span class="s2">&quot;#f39c12&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="c1">// yellow</span>
+      <span class="k">new</span> <span class="nx">dimple</span><span class="p">.</span><span class="nx">color</span><span class="p">(</span><span class="s2">&quot;#1abc9c&quot;</span><span class="p">,</span> <span class="s2">&quot;#16a085&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="c1">// turquoise</span>
+      <span class="k">new</span> <span class="nx">dimple</span><span class="p">.</span><span class="nx">color</span><span class="p">(</span><span class="s2">&quot;#95a5a6&quot;</span><span class="p">,</span> <span class="s2">&quot;#7f8c8d&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1">// gray</span>
+      <span class="p">];</span>
+    <span class="c1">// change to time series plot</span>
+    <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">myChart</span><span class="p">.</span><span class="nx">addTimeAxis</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="s2">&quot;%Y&quot;</span><span class="p">,</span> <span class="s2">&quot;%Y&quot;</span><span class="p">);</span>
+    <span class="nx">x</span><span class="p">.</span><span class="nx">overrideMin</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">time</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="s2">&quot;%Y&quot;</span><span class="p">).</span><span class="nx">parse</span><span class="p">(</span><span class="s2">&quot;1986&quot;</span><span class="p">);</span>
+    <span class="nx">x</span><span class="p">.</span><span class="nx">overrideMax</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">time</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="s2">&quot;%Y&quot;</span><span class="p">).</span><span class="nx">parse</span><span class="p">(</span><span class="s2">&quot;2009&quot;</span><span class="p">);</span>
+    <span class="nx">x</span><span class="p">.</span><span class="nx">ticks</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="nx">x</span><span class="p">.</span><span class="nx">fontSize</span> <span class="o">=</span> <span class="s2">&quot;14px&quot;</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">y1</span> <span class="o">=</span> <span class="nx">myChart</span><span class="p">.</span><span class="nx">addMeasureAxis</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;ArrDelay&quot;</span><span class="p">);</span>
+    <span class="nx">y1</span><span class="p">.</span><span class="nx">fontSize</span> <span class="o">=</span> <span class="s2">&quot;18px&quot;</span><span class="p">;</span>
+    <span class="nx">y1</span><span class="p">.</span><span class="nx">overrideMax</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+    <span class="nx">y1</span><span class="p">.</span><span class="nx">tickFormat</span> <span class="o">=</span> <span class="s2">&quot;f&quot;</span><span class="p">;</span>
+    <span class="nx">y1</span><span class="p">.</span><span class="nx">ticks</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">dots</span> <span class="o">=</span> <span class="nx">myChart</span><span class="p">.</span><span class="nx">addSeries</span><span class="p">([</span><span class="s2">&quot;Index&quot;</span><span class="p">,</span> <span class="s2">&quot;Carrier&quot;</span><span class="p">],</span> <span class="nx">dimple</span><span class="p">.</span><span class="nx">plot</span><span class="p">.</span><span class="nx">scatter</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">lines</span> <span class="o">=</span> <span class="nx">myChart</span><span class="p">.</span><span class="nx">addSeries</span><span class="p">([</span><span class="s2">&quot;Index&quot;</span><span class="p">,</span> <span class="s2">&quot;Carrier&quot;</span><span class="p">],</span> <span class="nx">dimple</span><span class="p">.</span><span class="nx">plot</span><span class="p">.</span><span class="nx">line</span><span class="p">);</span>
+    <span class="nx">myChart</span><span class="p">.</span><span class="nx">draw</span><span class="p">();</span>
+    <span class="c1">// orphan the legend</span>
+    <span class="nx">myChart</span><span class="p">.</span><span class="nx">legends</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="kd">var</span> <span class="nx">filterValues</span> <span class="o">=</span> <span class="nx">dimple</span><span class="p">.</span><span class="nx">getUniqueValues</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="s2">&quot;Carrier&quot;</span><span class="p">);</span>
+    <span class="nx">myLegend</span><span class="p">.</span><span class="nx">shapes</span><span class="p">.</span><span class="nx">selectAll</span><span class="p">(</span><span class="s2">&quot;rect&quot;</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">hide</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">newFilters</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="nx">filterValues</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">f</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">f</span> <span class="o">===</span> <span class="nx">e</span><span class="p">.</span><span class="nx">aggField</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="p">{</span>
+            <span class="nx">hide</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">newFilters</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">f</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">});</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">hide</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">style</span><span class="p">(</span><span class="s2">&quot;opacity&quot;</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="nx">newFilters</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">aggField</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]);</span>
+          <span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">style</span><span class="p">(</span><span class="s2">&quot;opacity&quot;</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">filterValues</span> <span class="o">=</span> <span class="nx">newFilters</span><span class="p">;</span>
+        <span class="nx">myChart</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="nx">dimple</span><span class="p">.</span><span class="nx">filterData</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="s2">&quot;Carrier&quot;</span><span class="p">,</span> <span class="nx">filterValues</span><span class="p">);</span>
+        <span class="nx">myChart</span><span class="p">.</span><span class="nx">draw</span><span class="p">(</span><span class="mi">40</span><span class="p">);</span>
+        <span class="nx">y1</span><span class="p">.</span><span class="nx">titleShape</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;Arrival Delay [minute]&quot;</span><span class="p">);</span>
+        <span class="nx">x</span><span class="p">.</span><span class="nx">titleShape</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+      <span class="p">});</span>
+
+    <span class="c1">//fine-tune the axises</span>
+    <span class="nx">y1</span><span class="p">.</span><span class="nx">titleShape</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;Arrival Delay [minute]&quot;</span><span class="p">);</span>
+    <span class="nx">x</span><span class="p">.</span><span class="nx">titleShape</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+    <span class="nx">svg</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="nx">myChart</span><span class="p">.</span><span class="nx">_xPixels</span><span class="p">()</span> <span class="o">+</span> <span class="nx">myChart</span><span class="p">.</span><span class="nx">_widthPixels</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="nx">myChart</span><span class="p">.</span><span class="nx">_yPixels</span><span class="p">()</span> <span class="o">-</span> <span class="mi">30</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s2">&quot;text-anchor&quot;</span><span class="p">,</span> <span class="s2">&quot;middle&quot;</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s2">&quot;font-family&quot;</span><span class="p">,</span> <span class="s2">&quot;sans-serif&quot;</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s2">&quot;font-weight&quot;</span><span class="p">,</span> <span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s2">&quot;Yearly Maximum Arrival-delay Time over Twenty Years&quot;</span><span class="p">);</span>
+
+    <span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id </span><span class="o">=</span> <span class="s">&#39;Text&#39;</span><span class="p">&gt;&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>The legend area is clcikable! Try it!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Use Chrome or IE. For some reasons Firefox does not render the chart properly.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+
+
+
+
+
+If you come up with other possible reasons, please leave it in the comments!
+                </div>
+                <footer class="text-right">
+                    <p>- sshu</p>
+                </footer>
+            </div>
+        </div>
+    </article>
+</section>
+<footer>
+    <hr>
+    <div class="row">
+        <div class="col-lg-9 text-center">
+            <p><small>
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                      <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
+
+            </small></p>
+        </div>
+    </div>
+</footer>            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery Version 1.11.2 -->
+    <script src="https://sshu2017.github.io/theme/js/jquery-1.11.2.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://sshu2017.github.io/theme/js/bootstrap.min.js"></script>
+    <!-- twitchy Script -->
+    <script src="https://sshu2017.github.io/theme/js/pelican_twitchy.min.js"></script>
+
+</body>
+</html>

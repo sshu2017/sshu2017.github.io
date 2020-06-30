@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="author" content="sshu" />
-        <meta name="description" content="I am aware of the existence of Git Hooks for quite a while but haven&#39;t really tried it out myself until today. Although it looks a simple thing to do, I did come across some interesting issues and had to do a little bit research. So why not share what …" />
+        <meta name="author" content="shushi2000" />
+        <meta name="description" content="If you are a Fitbit user who wants to save a copy of Fitbit data on your computer but doesn&#39;t have advanced programming skills , this tutorial is right for you! You don&#39;t need to do any coding at all to save your second-level data. I have been struggling with getting …" />
 
 
-    <title>TIL: How to use Git Hooks for Better Code Quality - SSHU's BLOG</title>
+    <title>How to Download Your Fitbit Second-Level Data Without Coding - SSHU's BLOG</title>
 
         <link rel="stylesheet" href="https://sshu2017.github.io/theme/css/bootstrap.journal.min.css" type="text/css"/>
 
@@ -142,7 +142,7 @@
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
-                    <li >
+                    <li class="active">
                         <a href="https://sshu2017.github.io/category/general-python.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             General, Python
@@ -163,7 +163,7 @@
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
-                    <li class="active">
+                    <li >
                         <a href="https://sshu2017.github.io/category/python-git-today-i-learned.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Python, Git, Today I Learned
@@ -205,20 +205,20 @@
             <div class="col-lg-9">
                 <header class="page-header">
                     <h1>
-                        <a href="https://sshu2017.github.io/How to use Git Hooks for Better Code Quality.html"
+                        <a href="https://sshu2017.github.io/how-to-download-your-fitbit-second-level-data-without-coding.html"
                            rel="bookmark"
-                           title="Permalink to TIL: How to use Git Hooks for Better Code Quality">
-                            TIL: How to use Git Hooks for Better Code Quality
+                           title="Permalink to How to Download Your Fitbit Second-Level Data Without Coding">
+                            How to Download Your Fitbit Second-Level Data Without Coding
                         </a>
                         <small>
 <div class="post-info">
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2020-06-29T00:00:00-07:00"> Mon 29 June 2020</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2016-06-16T21:45:00-07:00"> Thu 16 June 2016</time>
             </span>
             <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="https://sshu2017.github.io/category/python-git-today-i-learned.html">Python, Git, Today I Learned</a>
+                <i class="fa fa-folder-open padding-small"></i><a href="https://sshu2017.github.io/category/general-python.html">General, Python</a>
             </span>
         </small>
     </div>
@@ -230,70 +230,82 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <p>I am aware of the existence of <strong><a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">Git Hooks</a></strong> for quite a while but haven't really tried it out myself until today. Although it looks a simple thing to do, I did come across some <em>interesting</em> issues and had to do a little bit research. So why not share what I learned with the internet?</p>
-<p>First, I created one simple Python script, <strong><em>encrypt.py</em></strong>,  in which a function called <strong><em>encOnePassword</em></strong> is defined.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">hashlib</span>
-
-
-<span class="k">def</span> <span class="nf">encOnePassword</span><span class="p">(</span><span class="n">rawPassword</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Encrypt one string by using SHA256 with *Salt*</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        x (string): Any password from user input</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">salt</span> <span class="o">=</span> <span class="s2">&quot;This is the SALT&quot;</span>
-
-    <span class="c1"># if I accidentally changed th salt</span>
-    <span class="c1"># salt = &quot;This is not the SALT to use!&quot;</span>
-
-    <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">((</span><span class="n">salt</span> <span class="o">+</span> <span class="n">rawPassword</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+                    <p>If you are a Fitbit user who wants to save a copy of Fitbit data on your computer but doesn't have advanced programming skills , this tutorial is right for you! You don't need to do any coding at all to save your second-level data. I have been struggling with getting all the so-called 'intraday data' for quite a while. I have found many useful resources online, for example, <a href="http://pdwhomeautomation.blogspot.com/2015/03/sleep-infographic-using-raspberry-pi.html">Paul's tutorial</a>,  <a href="https://github.com/CollinChaffin/psFitb1t">Collin Chaffin's Powershell module</a>, and the <a href="https://github.com/orcasgit/python-fitbit">Fitbit-Python API</a>, but they are somehow complicated and I just could not make any of these working for me smoothly.  Recently I finally figured out a way to download these Fitbit data without any coding. Are you ready?</p>
+<p><strong>Step 1: Register an app on <a href="http://dev.fitbit.com">http://dev.fitbit.com</a></strong></p>
+<p>First you need to register an account on <a href="http://dev.fitbit.com">dev.fitbit.com</a>, and then click 'MANAGE YOUR APPS' on the top right area. Next you need to click 'Register a new app' button at the top right area to start with. Well, this step is simple, just make sure the OAuth 2.0  Application Type is set to 'Personal', and the Callback URL is complete - including the 'http://' part and also a '/' at the end. Here I used 'http://google.com/' as an example. I have used this blog's URL 'http://shishu.info/' which worked just fine too.</p>
+<p><a href="http://shishu.info/wp-content/uploads/2016/06/app2.jpg"><img alt="app2" class="aligncenter size-full wp-image-195" height="937" src="http://shishu.info/wp-content/uploads/2016/06/app2.jpg" width="749"></a></p>
+<p>After you click the red 'Register' button, you will be able to see the credentials for the app you just registered. The 'OAuth 2.0 Client ID' and 'Client Secret' will be used in the next step.</p>
+<p><a href="http://shishu.info/wp-content/uploads/2016/06/credentials2.jpg"><img alt="credentials2" class="aligncenter size-full wp-image-196" height="628" src="http://shishu.info/wp-content/uploads/2016/06/credentials2.jpg" width="748"></a></p>
+<p><strong>Step 2: Use the OAuth 2.0 tutorial page</strong></p>
+<p>Next you need to right click the 'OAuth 2.0 tutorial page' link and open it in a new tab, so that you can look back at your app's credentials easily. Make sure the 'Implicit Grant Flow' is chosen instead of 'Authorization Code Flow' - this will make things much easier! After you copy/paste the 'Client ID' and 'Client Secret' into the blanks and put in the Redirect URI, click the auto-generated link.</p>
+<p><a href="http://shishu.info/wp-content/uploads/2016/06/tutorial1.jpg"><img alt="tutorial1" class="aligncenter size-full wp-image-198" height="803" src="http://shishu.info/wp-content/uploads/2016/06/tutorial1.jpg" width="757"></a></p>
+<p>Then you will see the confirmation page. Just click 'Allow'.</p>
+<p><a href="http://shishu.info/wp-content/uploads/2016/06/confirmation.jpg"><img alt="confirmation" class="aligncenter size-full wp-image-199" height="579" src="http://shishu.info/wp-content/uploads/2016/06/confirmation.jpg" width="495"></a></p>
+<p>And you will be led to the 'Redirect URI', which is 'http://google.com/' in this case.  But the address bar now shows a very long string which is the token for your app.</p>
+<p><a href="http://shishu.info/wp-content/uploads/2016/06/token.jpg"><img alt="token" class="aligncenter size-full wp-image-200" height="520" src="http://shishu.info/wp-content/uploads/2016/06/token.jpg" width="1802"></a></p>
+<p>Next you need to copy and paste everything in the address bar but without the starting part ( https://www.google.com/ ) to the 'Parse response' section, and hit enter key once. This way you can clearly see what the token is, what the scope is, and how long the token is valid. In this case, the token is valid for 1 week, which equals to 604800 seconds. Pretty good, right?</p>
+<p><a href="http://shishu.info/wp-content/uploads/2016/06/token2.jpg"><img alt="token2" class="aligncenter size-full wp-image-201" height="443" src="http://shishu.info/wp-content/uploads/2016/06/token2.jpg" width="742"></a></p>
+<p><strong>Step 3: Make request and get the data!</strong></p>
+<p>After you are done with the 'Parse response', the next step is ready for you automatically.</p>
+<p><a href="http://shishu.info/wp-content/uploads/2016/06/curl.jpg"><img alt="curl" class="aligncenter size-full wp-image-202" height="343" src="http://shishu.info/wp-content/uploads/2016/06/curl.jpg" width="739"></a></p>
+<p>Justclick the 'Send to Hurl.it' link and 'Launch Request' in the new page. Make sure to tell the web that you are not a robot too.</p>
+<p><a href="http://shishu.info/wp-content/uploads/2016/06/Hurl_it.jpg"><img alt="Hurl_it" class="aligncenter size-full wp-image-203" height="792" src="http://shishu.info/wp-content/uploads/2016/06/Hurl_it.jpg" width="1827"></a></p>
+<p>After that, if you see the '200 OK' status - meaning everything works fine. And you can find the data you want in the lower half of the page. Like this:</p>
+<p><a href="http://shishu.info/wp-content/uploads/2016/06/body.jpg"><img alt="body" class="aligncenter size-full wp-image-204" height="829" src="http://shishu.info/wp-content/uploads/2016/06/body.jpg" width="1617"></a></p>
+<p>If you click 'view raw' at the right side, you will see the 'BODY' will be changed to raw text file and you can simply copy / paste them to a text editor. And that's all you do to download your Fitbit second-level data! As I promised, you don't need to know any programming skills to accomplish this, isn't that cool?</p>
+<p><strong>Additional tips:</strong></p>
+<p>tip 1: other data types</p>
+<p>If you want some other data rather than the 'user profile', you can simply change the 'API endpoint URL' in the 'Make Request' step. According the the <a href="https://dev.fitbit.com/docs/">Fitbit API documentation</a>, you can get the heart rate data by using this URL:</p>
+<p><code>https://api.fitbit.com/1/user/-/activities/heart/date/today/1d.json</code></p>
+<p>Or the sleep data by using:</p>
+<p><code>https://api.fitbit.com/1/user/28H22H/sleep/date/2014-09-01.json</code></p>
+<p>tip 2: save json file in an easier way</p>
+<p>If you think the 'Send to Hurl.it' method is not fast enough, you can copy the 'curl' command auto-generated in the 'Make Request' step and run it in terminal (for Windows, that is the 'cmd' window). Add the following part to the end of the copied 'curl' command so that the data will be saved to your disk:</p>
+<p><code>&gt;&gt; data_file.json</code></p>
+<p>tip 3: save multiple days' data automatically</p>
+<p>I think Fitbit provides the functionality to let uers download multiple days' data with one command, by specifying the date rage in the curl request. However I could not make it work for me for some unknown reason. Therefore I used a piece of Python code to download multiple days' data for me. Here's the code, which I think is pretty self-explanatory.</p>
+<p>``` {lang="Python" line="0"}
+import requests
+import json
+import pandas as pd
+from time import sleep</p>
+<h1>put the token for your app in between the single quotes</h1>
+<p>token = ''</p>
+<h1>make a list of dates</h1>
+<h1>ref: http://stackoverflow.com/questions/993358/creating-a-range-of-dates-in-python</h1>
+<h1>You can change the start and end date as you want</h1>
+<h1>Just make sure to use the yyyy-mm-dd format</h1>
+<p>start_date = '2015-12-28'
+end_date = '2016-06-14'
+datelist = pd.date_range(start = pd.to_datetime(start_date),
+                         end = pd.to_datetime(end_date)).tolist()</p>
+<p>'''
+The codes below use a for loop to generate one URL for each day in the datelist,
+and then request each day's data and save the data into individual json files.
+Because Fitbit limit 150 request per hour, I let the code sleep for 30 seconds 
+between each request, to meet this limitation.
+'''
+for ts in datelist:
+    date = ts.strftime('%Y-%m-%d')
+    url = 'https://api.fitbit.com/1/user/-/activities/heart/date/' + date + '/1d/1sec/time/00:00/23:59.json'
+    filename = 'HR'+ date +'.json'
+    response = requests.get(url=url, headers={'Authorization':'Bearer ' + token})</p>
+<div class="highlight"><pre><span></span><code><span class="err">if response.ok:</span>
+<span class="err">    with open(filename, &#39;w&#39;) as f:</span>
+<span class="err">        json.dump(response.content, f)</span>
+<span class="err">    print (date + &#39; is saved!&#39;)</span>
+<span class="err">    sleep(30)</span>
+<span class="c">else:</span>
+<span class="c">    print (&#39;The file of %s is not saved due to error!&#39; % date)</span>
+<span class="c">    sleep(30)</span>
 </code></pre></div>
 
 
-<p>Then I created another simple test script <strong><em>test_encrypt.py</em></strong>.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pytest</span>
-<span class="kn">from</span> <span class="nn">encrypt</span> <span class="kn">import</span> <span class="n">encOnePassword</span>
-
-
-<span class="k">def</span> <span class="nf">test_encOnePassword</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">encOnePassword</span><span class="p">(</span>
-        <span class="s2">&quot;1234567&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;9f9df71798d99794f643f7282d2b98c20a538ee0d307aa1b3d2387635c6ae52f&quot;</span>
-    <span class="k">assert</span> <span class="n">encOnePassword</span><span class="p">(</span>
-        <span class="s2">&quot;ABC_DEF&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;90da2f1901ff71c8ffdb314ce2621180d0169492ea9343bc1a9bb86bbfecd6b6&quot;</span>
-</code></pre></div>
-
-
-<p>Next, I ran the <strong><em>git init</em></strong> command and initialized a git repo. But when I looked into the <strong><em>.git/hooks/</em></strong> directory, there are a bunch of codes in there already! Well, that's something I didn't expect at all.</p>
-<p><img src="images/git_hooks_samples.png"></p>
-<p>So I made a directory call <strong><em>backup</em></strong> and moved all these samples into it, so they won't interfere with what I plan to do next. Then I created a shell script called <strong><em>pre-commit.sh</em></strong>.</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="nv">current_branch</span><span class="o">=</span><span class="sb">`</span>git branch <span class="p">|</span>grep <span class="s1">&#39;*&#39;</span> <span class="p">|</span>sed <span class="s1">&#39;s/* //&#39;</span><span class="sb">`</span>
-
-<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$current_branch</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="s2">&quot;master&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-    <span class="nb">echo</span> <span class="s2">&quot;Running tests pre-committ&quot;</span>
-    python -m pytest test_*.py
-    <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-        <span class="nb">echo</span> <span class="s2">&quot;Tests all passed!&quot;</span>
-        <span class="nb">exit</span> <span class="m">0</span>
-    <span class="k">else</span>
-        <span class="nb">echo</span> <span class="s2">&quot;Tests failed ... Committ not successful!&quot;</span>
-        <span class="nb">exit</span> <span class="m">1</span>
-    <span class="k">fi</span>
-<span class="k">fi</span>
-</code></pre></div>
-
-
-<p>*<em>Here I referenced the codes from <a href="https://www.giacomodebidda.com/a-simple-git-hook-for-your-python-projects/">Giacomo's blog</a> and changed it a little to fit my needs.</em></p>
-<p>When all of these are in place, I made the initial commit and it went smoothly. Then I changed the <strong><em>salt</em></strong> in the <strong><em>encOnePassword</em></strong> function, to mimic an unintentional bug, and commit the code again. I though the <strong><em>pre-commit</em></strong> hook would throw out an error and interrupt the commit, but <strong><em>IT DID NOT</em></strong>! What a surprise!</p>
-<p>After a little search on <a href="www.stacoverflow.com">stackoverflow</a>,I found <a href="https://stackoverflow.com/questions/5084100/post-commit-hook-not-running">this answer</a> and did two things:</p>
-<ol>
-<li>Changed the script name from <code>pre-commit.sh</code> to <code>pre-commit</code> (yes, remove the <code>.sh</code> part.)</li>
-<li>Made the script an executable one by running <code>chmod +x pre-commit</code>.</li>
-</ol>
-<p>Now, finally, the hook is working as I expected and it prevented me from committing bad codes to the master branch! Hooray!</p>
+<p>```</p>
+<p>Happy hacking!</p>
                 </div>
                 <footer class="text-right">
-                    <p>- sshu</p>
+                    <p>- shushi2000</p>
                 </footer>
             </div>
         </div>

@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="sshu" />
-        <meta name="description" content="I am aware of the existence of Git Hooks for quite a while but haven&#39;t really tried it out myself until today. Although it looks a simple thing to do, I did come across some interesting issues and had to do a little bit research. So why not share what …" />
+        <meta name="description" content="I started using Vim as my major code editor in 2017, when I started my current job as a Data Scientist at PointPredictive Inc., because the job requires me to SSH into remote Linux servers and edit Python and Bash scripts in the terminal. To be precise, I started with …" />
 
 
-    <title>TIL: How to use Git Hooks for Better Code Quality - SSHU's BLOG</title>
+    <title>The .vimrc File I Use and Love - SSHU's BLOG</title>
 
         <link rel="stylesheet" href="https://sshu2017.github.io/theme/css/bootstrap.journal.min.css" type="text/css"/>
 
@@ -156,14 +156,14 @@
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
-                    <li >
+                    <li class="active">
                         <a href="https://sshu2017.github.io/category/misc.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Misc
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
-                    <li class="active">
+                    <li >
                         <a href="https://sshu2017.github.io/category/python-git-today-i-learned.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Python, Git, Today I Learned
@@ -205,20 +205,20 @@
             <div class="col-lg-9">
                 <header class="page-header">
                     <h1>
-                        <a href="https://sshu2017.github.io/How to use Git Hooks for Better Code Quality.html"
+                        <a href="https://sshu2017.github.io/the-vimrc-file-i-use-and-love.html"
                            rel="bookmark"
-                           title="Permalink to TIL: How to use Git Hooks for Better Code Quality">
-                            TIL: How to use Git Hooks for Better Code Quality
+                           title="Permalink to The .vimrc File I Use and Love">
+                            The .vimrc File I Use and Love
                         </a>
                         <small>
 <div class="post-info">
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2020-06-29T00:00:00-07:00"> Mon 29 June 2020</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2020-06-10T00:00:00-07:00"> Wed 10 June 2020</time>
             </span>
             <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="https://sshu2017.github.io/category/python-git-today-i-learned.html">Python, Git, Today I Learned</a>
+                <i class="fa fa-folder-open padding-small"></i><a href="https://sshu2017.github.io/category/misc.html">Misc</a>
             </span>
         </small>
     </div>
@@ -230,67 +230,49 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <p>I am aware of the existence of <strong><a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">Git Hooks</a></strong> for quite a while but haven't really tried it out myself until today. Although it looks a simple thing to do, I did come across some <em>interesting</em> issues and had to do a little bit research. So why not share what I learned with the internet?</p>
-<p>First, I created one simple Python script, <strong><em>encrypt.py</em></strong>,  in which a function called <strong><em>encOnePassword</em></strong> is defined.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">hashlib</span>
+                    <p>I started using Vim as my major code editor in 2017, when I started my current job as a Data Scientist at <a href="https://pointpredictive.com/" target="_blank">PointPredictive Inc.</a>, because the job requires me to SSH into remote Linux servers and edit Python and Bash scripts in the terminal. To be precise, I started with Nano, which could let me get my job done. However I felt Nano is really inconvenient to use. So I decided to switch to Vim. The initial phase of using Vim is okay, not as horrible as many people have found, except that I DID go to stackoverflow to find out how to quit Vim (Ah yes, I was one of the <a href="https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/" target="_blank">1 million people who had struggled</a>). As time went by, the more I played around with Vim , the more I realized how powerful and versatile it is, and the more I liked it.</p>
+<p>After almost 3 years of using Vim, I finally have my .vimrc that I feel is good enough for me. And here it is.</p>
+<div class="highlight"><pre><span></span><code><span class="k">set</span> <span class="n">nocompatible</span>
+        <span class="n">filetype</span> <span class="k">off</span>
+        <span class="k">set</span> <span class="n">rtp</span><span class="o">+=~/</span><span class="p">.</span><span class="n">vim</span><span class="o">/</span><span class="n">bundle</span><span class="o">/</span><span class="n">vundle</span>
+        <span class="k">call</span> <span class="n">vundle</span><span class="o">#</span><span class="n">rc</span><span class="p">()</span>
+        <span class="n">Bundle</span> <span class="s1">&#39;gmarik/vundle&#39;</span>
+        <span class="n">Bundle</span> <span class="s1">&#39;jiangmiao/auto-pairs&#39;</span>
+        <span class="n">Bundle</span> <span class="s1">&#39;Lokaltog/vim-powerline&#39;</span>
+        <span class="n">Bundle</span> <span class="s1">&#39;scrooloose/nerdcommenter&#39;</span>
+        <span class="n">Bundle</span> <span class="s1">&#39;tmhedberg/SimpylFold&#39;</span>
+        <span class="n">Bundle</span> <span class="s1">&#39;Yggdroot/indentLine&#39;</span>
+        <span class="n">Bundle</span> <span class="s1">&#39;scrooloose/syntastic&#39;</span>
+        <span class="n">Bundle</span> <span class="s1">&#39;flazz/vim-colorschemes&#39;</span>
+        <span class="n">Bundle</span> <span class="s1">&#39;scrooloose/nerdtree&#39;</span>
+        <span class="n">Bundle</span> <span class="s1">&#39;RRethy/vim-illuminate&#39;</span>
+        <span class="n">Bundle</span> <span class="s1">&#39;majutsushi/tagbar&#39;</span>
+        <span class="n">Bundle</span> <span class="s1">&#39;psliwka/vim-smoothie&#39;</span>
 
-
-<span class="k">def</span> <span class="nf">encOnePassword</span><span class="p">(</span><span class="n">rawPassword</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Encrypt one string by using SHA256 with *Salt*</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        x (string): Any password from user input</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">salt</span> <span class="o">=</span> <span class="s2">&quot;This is the SALT&quot;</span>
-
-    <span class="c1"># if I accidentally changed th salt</span>
-    <span class="c1"># salt = &quot;This is not the SALT to use!&quot;</span>
-
-    <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">((</span><span class="n">salt</span> <span class="o">+</span> <span class="n">rawPassword</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+<span class="k">set</span> <span class="n">vb</span>
+<span class="n">let</span> <span class="k">g</span><span class="p">:</span><span class="n">is_bash</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">set</span> <span class="n">incsearch</span>
+<span class="k">set</span> <span class="n">hlsearch</span>
+<span class="k">set</span> <span class="n">bg</span><span class="o">=</span><span class="n">light</span>
+<span class="n">syntax</span> <span class="k">on</span>
+<span class="k">set</span> <span class="n">autoindent</span>
+<span class="k">set</span> <span class="n">smartindent</span>
+<span class="k">set</span> <span class="nb">number</span>
+<span class="k">set</span> <span class="n">relativenumber</span>
+<span class="n">hi</span> <span class="n">clear</span>
+<span class="n">syntax</span> <span class="n">enable</span>
+<span class="n">colorscheme</span> <span class="n">monokai</span>
+<span class="k">set</span> <span class="n">shiftwidth</span><span class="o">=</span><span class="mi">4</span>
+<span class="k">set</span> <span class="n">tabstop</span><span class="o">=</span><span class="mi">4</span>
+<span class="k">set</span> <span class="n">expandtab</span>
+<span class="k">set</span> <span class="n">laststatus</span><span class="o">=</span><span class="mi">2</span>
+<span class="k">set</span> <span class="n">showmatch</span>
+<span class="k">set</span> <span class="n">novisualbell</span>
+<span class="k">set</span> <span class="n">cursorline</span>
+<span class="k">set</span> <span class="n">guicursor</span><span class="o">+=</span><span class="n">n</span><span class="o">-</span><span class="n">v</span><span class="o">-</span><span class="k">c</span><span class="p">:</span><span class="n">blinkon0</span>
+<span class="n">let</span> <span class="k">g</span><span class="p">:</span><span class="n">PyFlakeCheckers</span> <span class="o">=</span> <span class="s1">&#39;pep8, mccabe, frosted&#39;</span>
+<span class="n">let</span> <span class="k">g</span><span class="p">:</span><span class="n">PyFlakeOnWrite</span> <span class="o">=</span> <span class="mi">1</span>
 </code></pre></div>
-
-
-<p>Then I created another simple test script <strong><em>test_encrypt.py</em></strong>.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pytest</span>
-<span class="kn">from</span> <span class="nn">encrypt</span> <span class="kn">import</span> <span class="n">encOnePassword</span>
-
-
-<span class="k">def</span> <span class="nf">test_encOnePassword</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">encOnePassword</span><span class="p">(</span>
-        <span class="s2">&quot;1234567&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;9f9df71798d99794f643f7282d2b98c20a538ee0d307aa1b3d2387635c6ae52f&quot;</span>
-    <span class="k">assert</span> <span class="n">encOnePassword</span><span class="p">(</span>
-        <span class="s2">&quot;ABC_DEF&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;90da2f1901ff71c8ffdb314ce2621180d0169492ea9343bc1a9bb86bbfecd6b6&quot;</span>
-</code></pre></div>
-
-
-<p>Next, I ran the <strong><em>git init</em></strong> command and initialized a git repo. But when I looked into the <strong><em>.git/hooks/</em></strong> directory, there are a bunch of codes in there already! Well, that's something I didn't expect at all.</p>
-<p><img src="images/git_hooks_samples.png"></p>
-<p>So I made a directory call <strong><em>backup</em></strong> and moved all these samples into it, so they won't interfere with what I plan to do next. Then I created a shell script called <strong><em>pre-commit.sh</em></strong>.</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="nv">current_branch</span><span class="o">=</span><span class="sb">`</span>git branch <span class="p">|</span>grep <span class="s1">&#39;*&#39;</span> <span class="p">|</span>sed <span class="s1">&#39;s/* //&#39;</span><span class="sb">`</span>
-
-<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$current_branch</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="s2">&quot;master&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-    <span class="nb">echo</span> <span class="s2">&quot;Running tests pre-committ&quot;</span>
-    python -m pytest test_*.py
-    <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-        <span class="nb">echo</span> <span class="s2">&quot;Tests all passed!&quot;</span>
-        <span class="nb">exit</span> <span class="m">0</span>
-    <span class="k">else</span>
-        <span class="nb">echo</span> <span class="s2">&quot;Tests failed ... Committ not successful!&quot;</span>
-        <span class="nb">exit</span> <span class="m">1</span>
-    <span class="k">fi</span>
-<span class="k">fi</span>
-</code></pre></div>
-
-
-<p>*<em>Here I referenced the codes from <a href="https://www.giacomodebidda.com/a-simple-git-hook-for-your-python-projects/">Giacomo's blog</a> and changed it a little to fit my needs.</em></p>
-<p>When all of these are in place, I made the initial commit and it went smoothly. Then I changed the <strong><em>salt</em></strong> in the <strong><em>encOnePassword</em></strong> function, to mimic an unintentional bug, and commit the code again. I though the <strong><em>pre-commit</em></strong> hook would throw out an error and interrupt the commit, but <strong><em>IT DID NOT</em></strong>! What a surprise!</p>
-<p>After a little search on <a href="www.stacoverflow.com">stackoverflow</a>,I found <a href="https://stackoverflow.com/questions/5084100/post-commit-hook-not-running">this answer</a> and did two things:</p>
-<ol>
-<li>Changed the script name from <code>pre-commit.sh</code> to <code>pre-commit</code> (yes, remove the <code>.sh</code> part.)</li>
-<li>Made the script an executable one by running <code>chmod +x pre-commit</code>.</li>
-</ol>
-<p>Now, finally, the hook is working as I expected and it prevented me from committing bad codes to the master branch! Hooray!</p>
                 </div>
                 <footer class="text-right">
                     <p>- sshu</p>
