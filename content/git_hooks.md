@@ -1,7 +1,7 @@
 Title: TIL: How to use Git Hooks for Better Code Quality
 Date: 2020-06-29
 Author: sshu
-Category: Python, Git, Today I Learned
+Category: Python, Git, Today_I_Learned
 Slug: How to use Git Hooks for Better Code Quality
 Status: published
 
