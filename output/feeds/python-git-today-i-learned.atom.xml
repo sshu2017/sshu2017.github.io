@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>SSHU's BLOG - Python, Git, Today I Learned</title><link href="https://sshu2017.github.io/" rel="alternate"></link><link href="https://sshu2017.github.io/feeds/python-git-today-i-learned.atom.xml" rel="self"></link><id>https://sshu2017.github.io/</id><updated>2020-06-29T00:00:00-07:00</updated><subtitle>About Programming, Data Science/Engineering etc.</subtitle><entry><title>TIL: How to use Git Hooks for Better Code Quality</title><link href="https://sshu2017.github.io/How%20to%20use%20Git%20Hooks%20for%20Better%20Code%20Quality.html" rel="alternate"></link><published>2020-06-29T00:00:00-07:00</published><updated>2020-06-29T00:00:00-07:00</updated><author><name>sshu</name></author><id>tag:sshu2017.github.io,2020-06-29:/How to use Git Hooks for Better Code Quality.html</id><summary type="html">&lt;p&gt;I am aware of the existence of &lt;strong&gt;&lt;a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks"&gt;Git Hooks&lt;/a&gt;&lt;/strong&gt; for quite a while but haven't really tried it out myself until today. Although it looks a simple thing to do, I did come across some &lt;em&gt;interesting&lt;/em&gt; issues and had to do a little bit research. So why not share what …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am aware of the existence of &lt;strong&gt;&lt;a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks"&gt;Git Hooks&lt;/a&gt;&lt;/strong&gt; for quite a while but haven't really tried it out myself until today. Although it looks a simple thing to do, I did come across some &lt;em&gt;interesting&lt;/em&gt; issues and had to do a little bit research. So why not share what I learned with the internet?&lt;/p&gt;
+&lt;p&gt;First, I created one simple Python script, &lt;strong&gt;&lt;em&gt;encrypt.py&lt;/em&gt;&lt;/strong&gt;,  in which a function called &lt;strong&gt;&lt;em&gt;encOnePassword&lt;/em&gt;&lt;/strong&gt; is defined.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;hashlib&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;encOnePassword&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rawPassword&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Encrypt one string by using SHA256 with *Salt*&lt;/span&gt;
+
+&lt;span class="sd"&gt;    Args:&lt;/span&gt;
+&lt;span class="sd"&gt;        x (string): Any password from user input&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;salt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;This is the SALT&amp;quot;&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# if I accidentally changed th salt&lt;/span&gt;
+    &lt;span class="c1"&gt;# salt = &amp;quot;This is not the SALT to use!&amp;quot;&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;hashlib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sha256&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;salt&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;rawPassword&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;encode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;utf-8&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hexdigest&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then I created another simple test script &lt;strong&gt;&lt;em&gt;test_encrypt.py&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pytest&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;encrypt&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;encOnePassword&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_encOnePassword&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;encOnePassword&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;1234567&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;9f9df71798d99794f643f7282d2b98c20a538ee0d307aa1b3d2387635c6ae52f&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;encOnePassword&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;ABC_DEF&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;90da2f1901ff71c8ffdb314ce2621180d0169492ea9343bc1a9bb86bbfecd6b6&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Next, I ran the &lt;strong&gt;&lt;em&gt;git init&lt;/em&gt;&lt;/strong&gt; command and initialized a git repo. But when I looked into the &lt;strong&gt;&lt;em&gt;.git/hooks/&lt;/em&gt;&lt;/strong&gt; directory, there are a bunch of codes in there already! Well, that's something I didn't expect at all.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/git_hooks_samples.png"&gt;&lt;/p&gt;
+&lt;p&gt;So I made a directory call &lt;strong&gt;&lt;em&gt;backup&lt;/em&gt;&lt;/strong&gt; and moved all these samples into it, so they won't interfere with what I plan to do next. Then I created a shell script called &lt;strong&gt;&lt;em&gt;pre-commit.sh&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class="nv"&gt;current_branch&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;git branch &lt;span class="p"&gt;|&lt;/span&gt;grep &lt;span class="s1"&gt;&amp;#39;*&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;sed &lt;span class="s1"&gt;&amp;#39;s/* //&amp;#39;&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$current_branch&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;master&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Running tests pre-committ&amp;quot;&lt;/span&gt;
+    python -m pytest test_*.py
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$?&lt;/span&gt; -eq &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+        &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Tests all passed!&amp;quot;&lt;/span&gt;
+        &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;
+        &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Tests failed ... Committ not successful!&amp;quot;&lt;/span&gt;
+        &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
+    &lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;*&lt;em&gt;Here I referenced the codes from &lt;a href="https://www.giacomodebidda.com/a-simple-git-hook-for-your-python-projects/"&gt;Giacomo's blog&lt;/a&gt; and changed it a little to fit my needs.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;When all of these are in place, I made the initial commit and it went smoothly. Then I changed the &lt;strong&gt;&lt;em&gt;salt&lt;/em&gt;&lt;/strong&gt; in the &lt;strong&gt;&lt;em&gt;encOnePassword&lt;/em&gt;&lt;/strong&gt; function, to mimic an unintentional bug, and commit the code again. I though the &lt;strong&gt;&lt;em&gt;pre-commit&lt;/em&gt;&lt;/strong&gt; hook would throw out an error and interrupt the commit, but &lt;strong&gt;&lt;em&gt;IT DID NOT&lt;/em&gt;&lt;/strong&gt;! What a surprise!&lt;/p&gt;
+&lt;p&gt;After a little search on &lt;a href="www.stacoverflow.com"&gt;stackoverflow&lt;/a&gt;,I found &lt;a href="https://stackoverflow.com/questions/5084100/post-commit-hook-not-running"&gt;this answer&lt;/a&gt; and did two things:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Changed the script name from &lt;code&gt;pre-commit.sh&lt;/code&gt; to &lt;code&gt;pre-commit&lt;/code&gt; (yes, remove the &lt;code&gt;.sh&lt;/code&gt; part.)&lt;/li&gt;
+&lt;li&gt;Made the script an executable one by running &lt;code&gt;chmod +x pre-commit&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now, finally, the hook is working as I expected and it prevented me from committing bad codes to the master branch! Hooray!&lt;/p&gt;</content><category term="Python, Git, Today I Learned"></category></entry></feed>
