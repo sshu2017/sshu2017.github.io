@@ -1,4 +1,4 @@
-Title: Today_I_Learned: How to use Git Hooks for Better Code Quality
+Title: Today I Learned: How to use Git Hooks for Better Code Quality
 Date: 2020-06-29
 Author: sshu
 Category: Git
