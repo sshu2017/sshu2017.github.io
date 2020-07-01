@@ -1,7 +1,7 @@
 Title: Use Rvest to Download Traffic Data from Caltrans Performance Measurement System
 Date: 2016-08-08 07:29
 Author: sshu
-Category: R, web-scraping
+Category: R
 Slug: use-rvest-to-download-traffic-data-from-caltrans-performance-measurement-system
 Status: published
 
