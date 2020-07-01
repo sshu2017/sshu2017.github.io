@@ -1,6 +1,6 @@
 Title: How to Download Your Fitbit Second-Level Data Without Coding
 Date: 2016-06-16 21:45
-Author: shushi2000
+Author: sshu
 Category: General, Python
 Slug: how-to-download-your-fitbit-second-level-data-without-coding
 Status: published
